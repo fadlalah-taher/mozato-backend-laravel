@@ -9,12 +9,7 @@ class UserController extends Controller
 {
 
     public function getAllUsers($id = null){
-        if($id != null){
-            $restos = User::find($id);
-            //$restos = $restos? $restos->name : '';
-        }else{
-            $restos = User::all();
-        }
+        $restos = User::all();
         
         return response()->json([
             "status" => "Success",
@@ -22,7 +17,7 @@ class UserController extends Controller
         ], 200);
     }
 
-    /*public function signUp(Request $request, $user_type_id){
+    public function signUp(Request $request, $user_type_id){
         die($request);
         $user = [];
         $user["first_name"] = $request->fnamez;
@@ -33,5 +28,5 @@ class UserController extends Controller
             "status" => "Success",
             "users" => $user
         ], 200);
-    }*/
+    }
 }
