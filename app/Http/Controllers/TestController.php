@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function sayHi(){
-        $message = "Hi For test";
+        $message = "Hi for test";
 
         return response()->json([
             "status" => "Success",

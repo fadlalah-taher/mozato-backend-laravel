@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-//use Hash;
+
 
 class UserController extends Controller
 {
@@ -15,12 +15,23 @@ class UserController extends Controller
 
         return response()->json([
             "status" => "Success",
-            "restos" => $users
+            "users" => $users
         ], 200);
     }
 
+   
+
 
     public function addUser(Request $request){
+        /*$user = [];
+        $user["full_name"] = $request->full_name;
+        $user["email"] = $request->email;
+        $user["password"] = $request->password;
+        $user["phone_number"] = $request->phone_number;
+        $user["address"] = $request->address;
+        $user["user_role"] = $request->user_role;
+        $user["gender"] = $request->gender;
+        $user["age"] = $request->age;*/
         $user = new User;
         $user->full_name = $request->full_name;
         $user->email = $request->email;
@@ -33,7 +44,8 @@ class UserController extends Controller
         $user->save();
         
         return response()->json([
-            "status" => "Success"
+            "status" => "Success",
+            "message" => $user
         ], 200);
     }
 
@@ -44,10 +56,9 @@ class UserController extends Controller
         $user_password = User::where('password', '=',$password)->first();
         if($user){
             if($user_password){
-                echo "hi";
                 return response()->json([
                     "status" => "Success",
-                    "message" => "success"
+                    "message" => "successfully Logged in"
                 ], 200);
             }
         }
