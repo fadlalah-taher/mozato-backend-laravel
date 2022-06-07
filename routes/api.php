@@ -15,6 +15,8 @@ Route::get('/all_users', [UserController::class, 'getAllUsers']);
 Route::post('/add_user', [UserController::class, 'addUser']);
 Route::post('/login', [UserController::class, 'login']);
 
+Route::post('/update_pro/{user_id}', [UserController::class, 'updateProfile']);
+
 //Route::get('/register/{user_type_id}', [TestController::class, 'signUp'])->name('sign-up');
 
 

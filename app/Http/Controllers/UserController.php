@@ -26,7 +26,7 @@ class UserController extends Controller
         $user = new User;
         $user->full_name = $request->full_name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = hash('sha256', $request->password);//$request->password;
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
         $user->user_role = $request->user_role;
@@ -53,6 +53,25 @@ class UserController extends Controller
                 ], 200);
             }
         }
+    }
+
+    public function updateProfile(Request $request, $user_id){
+        $user = User::where('user_id', '=', $user_id)->first();
+        /*$user = new User;*/
+        $user->full_name = $request->full_name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+        $user->user_role = $request->user_role;
+        $user->gender = $request->gender;
+        $user->age = $request->age;
+        $user->save();
+        
+        return response()->json([
+            "status" => "Success",
+            "message" => $user
+        ], 200);
     }
 
 }
