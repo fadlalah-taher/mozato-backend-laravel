@@ -26,7 +26,7 @@ class UserController extends Controller
         $user = new User;
         $user->full_name = $request->full_name;
         $user->email = $request->email;
-        $user->password = hash('sha256', $request->password);//$request->password;
+        $user->password = hash('sha256', $request->password);
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
         $user->user_role = $request->user_role;
@@ -56,18 +56,7 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request, $user_id){
-        $user = User::where('user_id', '=', $user_id)->first();
-        /*$user = new User;*/
-        $user->full_name = $request->full_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->phone_number = $request->phone_number;
-        $user->address = $request->address;
-        $user->user_role = $request->user_role;
-        $user->gender = $request->gender;
-        $user->age = $request->age;
-        $user->save();
-        
+        $user = User::where('user_id', '=', $user_id)->update(['full_name' => $request->input('full_name'),'email' => $request->input('email'),'password' => hash('sha256', $request->password),'phone_number' => $request->input('phone_number'),'address' => $request->input('address'),'gender' => $request->input('gender'),'age' => $request->input('age')]);
         return response()->json([
             "status" => "Success",
             "message" => $user
