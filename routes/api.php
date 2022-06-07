@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('/hi', [TestController::class, 'sayHi'])->name('say-hi');
-Route::get('/all_users/{id?}', [UserController::class, 'getAllUsers']);
+Route::get('/all_users', [UserController::class, 'getAllUsers']);
 
 Route::post('/add_user', [UserController::class, 'addUser']);
 Route::post('/login', [UserController::class, 'login']);

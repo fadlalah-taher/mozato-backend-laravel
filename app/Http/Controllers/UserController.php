@@ -10,14 +10,15 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function getAllUsers($id = null){
-        $restos = User::all();
+    public function getAllUsers(){
+        $users = User::all();
 
         return response()->json([
             "status" => "Success",
-            "restos" => $restos
+            "restos" => $users
         ], 200);
     }
+
 
     public function addUser(Request $request){
         $user = new User;
@@ -35,6 +36,8 @@ class UserController extends Controller
             "status" => "Success"
         ], 200);
     }
+
+
     public function login(Request $request){
         $user = User::where('email', '=', $request->email)->first();
         $password = hash('sha256', $request->password);
