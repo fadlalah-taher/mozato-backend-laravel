@@ -23,15 +23,6 @@ class UserController extends Controller
 
 
     public function addUser(Request $request){
-        /*$user = [];
-        $user["full_name"] = $request->full_name;
-        $user["email"] = $request->email;
-        $user["password"] = $request->password;
-        $user["phone_number"] = $request->phone_number;
-        $user["address"] = $request->address;
-        $user["user_role"] = $request->user_role;
-        $user["gender"] = $request->gender;
-        $user["age"] = $request->age;*/
         $user = new User;
         $user->full_name = $request->full_name;
         $user->email = $request->email;
