@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RestaurantController;
 
 
 Route::get('/hi', [TestController::class, 'sayHi'])->name('say-hi');
 Route::get('/all_users', [UserController::class, 'getAllUsers']);
 
-Route::post('/add_resto', [UserController::class, 'addResto']);
+Route::post('/add_resto', [RestaurantController::class, 'addResto']);
 
 
 Route::post('/add_user', [UserController::class, 'addUser']);
