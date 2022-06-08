@@ -37,7 +37,7 @@ class RestaurantController extends Controller
 
     /*public function displayResto(Request $request, $restaurant_id = null){
         if($restaurant_id != null){
-            $resto = Restaurant::where('restaurant_id', '=', $request->$restaurant_id);
+            $resto = Restaurant::where('restaurant_id', '=', $request->$restaurant_id)->first();
             return response()->json([
                 "status" => "Success",
                 "resto" => $resto
