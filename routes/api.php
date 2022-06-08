@@ -11,6 +11,7 @@ use App\Http\Controllers\RestaurantController;
 
 Route::get('/hi', [TestController::class, 'sayHi'])->name('say-hi');
 Route::get('/all_users', [UserController::class, 'getAllUsers']);
+Route::post('/get_user/{user_id?}', [UserController::class, 'getUser']);
 
 Route::post('/add_resto', [RestaurantController::class, 'addResto']);
 

@@ -18,6 +18,22 @@ class UserController extends Controller
             "users" => $users
         ], 200);
     }
+    
+    public function getUser(Request $request, $user_id = null){
+        if($user_id != null){
+            $user = User::where('user_id', '=', $request->user_id)->first();
+            return response()->json([
+                "status" => "Success",
+                "user" => $user
+            ], 200);
+        }
+        $users = User::all();
+        return response()->json([
+            "status" => "Success",
+            "users" => $users
+        ], 200);
+    } 
+    
 
    
 
