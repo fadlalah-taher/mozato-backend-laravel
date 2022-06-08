@@ -45,13 +45,17 @@ class UserController extends Controller
         $user = User::where('email', '=', $request->email)->first();
         $password = hash('sha256', $request->password);
         $user_password = User::where('password', '=',$password)->first();
-        if($user){
-            if($user_password){
-                return response()->json([
-                    "status" => "Success",
-                    "message" => "successfully Logged in"
-                ], 200);
-            }
+        if($user && $user_password){
+            return response()->json([
+                "status" => "Success",
+                "message" => $user
+            ], 200);
+        }
+        else{
+            return response()->json([
+                "status" => "Fail",
+                "message" => "Wrong email or/and password"
+            ], 200);
         }
     }
 
