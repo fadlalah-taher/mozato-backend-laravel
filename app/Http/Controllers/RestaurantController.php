@@ -26,4 +26,27 @@ class RestaurantController extends Controller
             "message" => $resto
         ], 200);
     }
+
+    public function displayRestos(){
+        $restos = Restaurant::all();
+        return response()->json([
+            "status" => "Success",
+            "restos" => $restos
+        ], 200);
+    }
+
+    /*public function displayResto(Request $request, $restaurant_id = null){
+        if($restaurant_id != null){
+            $resto = Restaurant::where('restaurant_id', '=', $request->$restaurant_id);
+            return response()->json([
+                "status" => "Success",
+                "resto" => $resto
+            ], 200);
+        }
+        $restos = Restaurant::all();
+        return response()->json([
+            "status" => "Success",
+            "restos" => $restos
+        ], 200);
+    } */
 }
