@@ -45,7 +45,7 @@ class UserController extends Controller
         $user->password = hash('sha256', $request->password);
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
-        $user->user_role = $request->user_role;
+        $user->user_role = 0;
         $user->gender = $request->gender;
         $user->age = $request->age;
         $user->save();
